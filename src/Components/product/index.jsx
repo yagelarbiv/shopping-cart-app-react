@@ -6,6 +6,7 @@ export default function Product({ Item }) {
   const Dispatch = useDispatch();
   const Cart = useSelector((state) => state.Cart);
   const [images, setImages] = useState(Item?.images[0]);
+  const array = [1, 2, , 3, 4, 5, 6, 78, 9];
 
   function handleAddToCart() {
     Dispatch(addToCart(Item));
@@ -14,7 +15,7 @@ export default function Product({ Item }) {
   function handleRemoveFromCart() {
     Dispatch(removeFromCart(Item.id));
   }
-  
+  console.log(Item);
   return (
     <div>
       <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 h-[390px] mt-10 ml-5 rounded-xl">
@@ -25,7 +26,7 @@ export default function Product({ Item }) {
             className="object-cover h-full w-full"
           />
           <select
-            className="w-auto mt-5 rounded-xl border-black border-2"
+            className="w-auto mt-5 rounded-xl justify-self-start border-black border-2"
             onChange={(e) => setImages(e.target.value)}
           >
             {Item?.images.map((image, index) => {
@@ -37,8 +38,8 @@ export default function Product({ Item }) {
             })}
           </select>
         </div>
-        <div>
-          <h1 className="max-w-none w-40 truncate mt-8 text-gray-700 font-bold text-lg">
+        <div  className="max-w-none w-40 truncate mt-8 text-gray-700 font-bold text-lg">
+          <h1>
             {Item?.title}
           </h1>
         </div>
