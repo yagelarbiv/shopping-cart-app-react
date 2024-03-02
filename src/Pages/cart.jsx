@@ -33,7 +33,7 @@ export default function Cart() {
               </p>
               <p>
                 <span className="text-gray-800 font-bold">Total Amount</span>
-                <span>: {total}</span>
+                <span>: {total}$</span>
               </p>
             </div>
           </div>
