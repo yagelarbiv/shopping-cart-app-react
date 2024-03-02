@@ -15,7 +15,8 @@ export default function Product({ Item }) {
   function handleRemoveFromCart() {
     Dispatch(removeFromCart(Item.id));
   }
-  console.log(Item);
+
+  
   return (
     <div>
       <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 h-[390px] mt-10 ml-5 rounded-xl">
