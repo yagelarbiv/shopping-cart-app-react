@@ -6,7 +6,6 @@ export default function Product({ Item }) {
   const Dispatch = useDispatch();
   const Cart = useSelector((state) => state.Cart);
   const [images, setImages] = useState(Item?.images[0]);
-  const array = [1, 2, , 3, 4, 5, 6, 78, 9];
 
   function handleAddToCart() {
     Dispatch(addToCart(Item));
