@@ -24,7 +24,7 @@ export default function Cart() {
           </div>
           <div className="w-[300px]">
             <div className="flex flex-col justify-center items-end p-5 space-y-5 mt-14">
-            <h1 className="font-bold text-lg text-red-800">
+              <h1 className="font-bold text-lg text-red-800">
                 Your Cart Summary
               </h1>
               <p>

@@ -7,7 +7,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   
 
-  async function fetchlistofproducts() {
+  async function fetchListOfProducts() {
     setLoading(true);
     try {
       const response = await fetch('https://dummyjson.com/products');
@@ -23,7 +23,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    fetchlistofproducts();
+    fetchListOfProducts();
   }, []);
 
   return (
@@ -34,7 +34,7 @@ export default function Home() {
             height={"120"}
             width={"120"}
             color="rgb(127, 29, 29)"
-            visability={true}
+            visibility={true}
           />
         </div>
       ) : (

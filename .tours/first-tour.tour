@@ -1,0 +1,67 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "first tour",
+  "steps": [
+    {
+      "file": "src/Pages/home.jsx",
+      "description": "this a asyncronic function that pulls the data of the Products from an API",
+      "line": 10
+    },
+    {
+      "file": "src/Pages/home.jsx",
+      "description": "an event the calls the fetch function on every change in the page",
+      "line": 25
+    },
+    {
+      "file": "src/Pages/home.jsx",
+      "description": "Loading Screen\r\n",
+      "line": 32
+    },
+    {
+      "file": "src/Pages/home.jsx",
+      "description": "Products Grid\r\n",
+      "line": 41
+    },
+    {
+      "file": "src/Pages/home.jsx",
+      "description": "Calls  Component of the Product that renders it's html",
+      "line": 44
+    },
+    {
+      "file": "src/Pages/cart.jsx",
+      "description": "an event that renders the total Price display every time the cart array changes",
+      "line": 10
+    },
+    {
+      "file": "src/Pages/cart.jsx",
+      "description": "display if the cart is empty",
+      "line": 42
+    },
+    {
+      "file": "src/Pages/cart.jsx",
+      "description": "cart Item Grid\r\n",
+      "line": 19
+    },
+    {
+      "file": "src/Pages/cart.jsx",
+      "description": "a Component the Create the Html Section of a single cart Item",
+      "line": 21
+    },
+    {
+      "file": "src/Pages/cart.jsx",
+      "description": "Cart Summery",
+      "line": 27
+    },
+    {
+      "file": "src/Pages/cart.jsx",
+      "description": "Cart Item Total",
+      "line": 31
+    },
+    {
+      "file": "src/Pages/cart.jsx",
+      "description": "Cart Price Total",
+      "line": 35
+    }
+  ],
+  "ref": "master"
+}
