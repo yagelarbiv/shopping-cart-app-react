@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../../Store/Slices/cart-Slice";
+import {
+  addToCart,
+  removeFromCart,
+  setLocalStorage,
+} from "../../Store/Slices/cart-Slice";
 import { useState } from "react";
 
 export default function Product({ Item }) {
@@ -9,13 +13,14 @@ export default function Product({ Item }) {
 
   function handleAddToCart() {
     Dispatch(addToCart(Item));
+    Dispatch(setLocalStorage(Item));
   }
 
   function handleRemoveFromCart() {
     Dispatch(removeFromCart(Item.id));
+    Dispatch(setLocalStorage(Item));
   }
 
-  
   return (
     <div>
       <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 h-[390px] mt-10 ml-5 rounded-xl">
@@ -38,10 +43,8 @@ export default function Product({ Item }) {
             })}
           </select>
         </div>
-        <div  className="max-w-none w-40 truncate mt-8 text-gray-700 font-bold text-lg">
-          <h1>
-            {Item?.title}
-          </h1>
+        <div className="max-w-none w-40 truncate mt-8 text-gray-700 font-bold text-lg">
+          <h1>{Item?.title}</h1>
         </div>
         <div className="flex items-center justify-center w-full mt-5">
           <button

@@ -1,3 +1,11 @@
 {
-  "files.autoSave": "afterDelay"
+  "files.autoSave": "afterDelay",
+  "cSpell.words": [
+    "firebaseapp",
+    "firstfirebase",
+    "logedin",
+    "reduxjs",
+    "setlogedin",
+    "signup"
+  ]
 }

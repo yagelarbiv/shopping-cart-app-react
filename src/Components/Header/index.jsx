@@ -18,6 +18,12 @@ export default function Header() {
           <Link to={"/cart"}>
             <li className="cursor-pointer">Cart</li>
           </Link>
+          <Link to={"/signup"}>
+            <li className="cursor-pointer">SignUp</li>
+          </Link>
+          <Link to={"/login"}>
+            <li className="cursor-pointer">Login</li>
+          </Link>
         </ul>
       </nav>
     </div>

@@ -6,7 +6,7 @@ import CartTile from "../Components/Cart-Tile";
 export default function Cart() {
   const [total, setTotal] = useState(0);
   const Cart = useSelector((state) => state.Cart);
-
+  
   useEffect(() => {
     setTotal(Cart.reduce((acc, curr) => acc + curr.price, 0));
   }, [Cart]);
