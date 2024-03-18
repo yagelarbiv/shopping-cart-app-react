@@ -5,8 +5,11 @@ import CartTile from "../Components/Cart-Tile";
 
 export default function Cart() {
   const [total, setTotal] = useState(0);
-  const Cart = useSelector((state) => state.Cart);
-  
+  let Cart = useSelector((state) => state.Cart);
+  function checkOut(){
+    Cart = [];
+    localStorage.setItem("cart", JSON.stringify(Cart));
+  }
   useEffect(() => {
     setTotal(Cart.reduce((acc, curr) => acc + curr.price, 0));
   }, [Cart]);
@@ -35,6 +38,9 @@ export default function Cart() {
                 <span className="text-gray-800 font-bold">Total Amount</span>
                 <span>: {total}$</span>
               </p>
+              <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4" onClick={checkOut}>
+                CHECKOUT
+              </button>
             </div>
           </div>
         </>

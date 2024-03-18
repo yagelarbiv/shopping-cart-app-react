@@ -5,6 +5,7 @@ import {
   setLocalStorage,
 } from "../../Store/Slices/cart-Slice";
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 export default function Product({ Item }) {
   const Dispatch = useDispatch();
@@ -46,7 +47,7 @@ export default function Product({ Item }) {
         <div className="max-w-none w-40 truncate mt-8 text-gray-700 font-bold text-lg">
           <h1>{Item?.title}</h1>
         </div>
-        <div className="flex items-center justify-center w-full mt-5">
+        <div className="flex items-center justify-center w-full mt-2">
           <button
             onClick={
               Cart.some((Product) => Product.id === Item.id)
@@ -59,6 +60,11 @@ export default function Product({ Item }) {
               ? "Remove from Cart"
               : "Add to Cart"}
           </button>
+          <Link to={"/details"}  state={{Item: Item}}>
+            <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
+              Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>
