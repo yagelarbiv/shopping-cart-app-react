@@ -1,10 +1,27 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import {
+  addToCart,
+  removeFromCart,
+  setLocalStorage,
+} from "../../Store/Slices/cart-Slice";
 
 export default function Details() {
+  const Cart = useSelector((state) => state.Cart);
   const { state } = useLocation();
   const { Item } = state;
   const [Image, setImage] = useState(Item.images[0]);
+  const Dispatch = useDispatch();
+  function handleAddToCart() {
+    Dispatch(addToCart(Item));
+    Dispatch(setLocalStorage(Item));
+  }
+
+  function handleRemoveFromCart() {
+    Dispatch(removeFromCart(Item.id));
+    Dispatch(setLocalStorage(Item));
+  }
   function handlePrice() {
     return (Item.price * (1 + Item.discountPercentage / 100)).toFixed(2);
   }
@@ -82,9 +99,20 @@ export default function Details() {
             nisl suscipit, nec tincidunt mi consectetur.
           </p>
         </div>
-        <button className="bg-black hover:bg-gray-700 text-white border-2 rounded-lg font-bold p-4">
-          Add to cart
-        </button>
+        <div className="flex items-center justify-center w-full mt-2">
+        <button
+            onClick={
+              Cart.some((Product) => Product.id === Item.id)
+                ? handleRemoveFromCart
+                : handleAddToCart
+            }
+            className="bg-red-950 text-white border-2 rounded-lg font-bold p-4"
+          >
+            {Cart.some((Product) => Product.id === Item.id)
+              ? "Remove from Cart"
+              : "Add to Cart"}
+          </button>
+        </div>
       </div>
     </div>
   );

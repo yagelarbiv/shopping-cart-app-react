@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 import SignUp from './Pages/Signup';
 import Header from "./Components/Header";
 import Details from "./Components/Details";
+import Checkout from './Pages/Checkout';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/details" element={<Details />} />
+        <Route path="/Checkout" element={<Checkout />} />
       </Routes>
     </div>
   );
