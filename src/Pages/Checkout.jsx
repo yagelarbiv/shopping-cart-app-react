@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import CartTile from './../Components/Cart-Tile/index';
 
 export default function Checkout() {
   const [total, setTotal] = useState(0);
