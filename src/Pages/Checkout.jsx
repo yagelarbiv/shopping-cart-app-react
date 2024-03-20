@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setLocalStorage } from "../Store/Slices/cart-Slice";
+import { useSelector } from "react-redux";
+import CartTile from './../Components/Cart-Tile/index';
 
 export default function Checkout() {
-  const Dispatch = useDispatch();
   const [total, setTotal] = useState(0);
   const [Length, setLength] = useState(0);
   let Cart = useSelector((state) => state.Cart);
   
   function checkOut() {
-    Dispatch(setLocalStorage([]));
+    localStorage.clear();
     setLength(0);
     setTotal(0);
     alert("Thank you for shopping with us");

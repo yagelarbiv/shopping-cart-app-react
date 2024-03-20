@@ -31,11 +31,14 @@ export default function SignUp() {
   return (
     <main>
       <section>
-        <div>
-          <div>
-            <h1> FocusApp </h1>
+        <div className="flex justify-center">
+          <div className="w-25 h-35 shadow-2xl p-10 rounded-xl">
+            <h1 className="text-red-900 font-bold text-xl sm:text-2xl mb-2 md:text-3xl cursor-pointer tracking-wide">
+              {" "}
+              SignUp{" "}
+            </h1>
             <form>
-              <div>
+              <div className="mb-3">
                 <label htmlFor="email-address">Email address</label>
                 <input
                   type="email"
@@ -47,7 +50,7 @@ export default function SignUp() {
                 />
               </div>
 
-              <div>
+              <div className="mb-3">
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
@@ -68,7 +71,10 @@ export default function SignUp() {
               </button>
             </form>
             <p>
-              Already have an account? <NavLink to="/login">Sign in</NavLink>
+              Already have an account?{" "}
+              <NavLink className={"text-red-900 text-lg"} to="/login">
+                Sign in
+              </NavLink>
             </p>
           </div>
         </div>
