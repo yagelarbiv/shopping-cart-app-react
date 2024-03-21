@@ -7,6 +7,7 @@ import SignUp from './Pages/Signup';
 import Header from "./Components/Header";
 import Details from "./Components/Details";
 import Checkout from './Pages/Checkout';
+import DeleteProduct from "./Pages/DeleteProduct";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/details" element={<Details />} />
         <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/delete" element={<DeleteProduct />} />
       </Routes>
     </div>
   );

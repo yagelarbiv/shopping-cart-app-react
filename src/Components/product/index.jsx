@@ -46,6 +46,7 @@ export default function Product({ Item }) {
         </div>
         <div className="max-w-none w-40 truncate mt-8 text-gray-700 font-bold text-lg">
           <h1>{Item?.title}</h1>
+          <p>id:{Item?.id}</p>
         </div>
         <div className="flex items-center justify-center w-full mt-2">
           <button
