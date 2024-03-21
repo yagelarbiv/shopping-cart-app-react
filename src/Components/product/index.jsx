@@ -7,7 +7,7 @@ import {
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 
-export default function Product({ Item }) {
+export default function Product({ Item, open }) {
   const Dispatch = useDispatch();
   const Cart = useSelector((state) => state.Cart);
   const [images, setImages] = useState(Item?.images[0]);

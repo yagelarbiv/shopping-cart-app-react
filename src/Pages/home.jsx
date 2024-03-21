@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Circles } from "react-loader-spinner";
 import Product from "../Components/product";
 import ProductsService from "../Service/Products-Service";
+import { useLocation } from "react-router-dom";
 
 export default function Home() {
+  console.log(useLocation());
   const [products, setProducts] = useState([]);
   const [Categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -67,8 +69,8 @@ export default function Home() {
             <select onChange={(e) => getProductsByCategories(e.target.value)} className="w-auto mt-5 rounded-xl border-black border-2">
               <option value={"All"}>Filter by Category</option>
               {Categories?.map((item, index) => (
-                <option key={index} value={item}>
-                  {item}
+                <option key={index} value={item.name}>
+                  {item.name}
                 </option>
               ))}
             </select>

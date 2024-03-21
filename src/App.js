@@ -8,6 +8,8 @@ import Header from "./Components/Header";
 import Details from "./Components/Details";
 import Checkout from './Pages/Checkout';
 import DeleteProduct from "./Pages/DeleteProduct";
+import UpdateProduct from "./Pages/UpdateProduct";
+import AddProduct from "./Pages/AddProduct";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/details" element={<Details />} />
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/delete" element={<DeleteProduct />} />
+        <Route path="/update" element={<UpdateProduct />} />
+        <Route path="/Add" element={<AddProduct />} />
       </Routes>
     </div>
   );
