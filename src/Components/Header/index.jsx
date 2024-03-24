@@ -43,12 +43,15 @@ export default function Header() {
             <>
               { open ?
                 <>
-                {/* TODO: Add other links for axios (Update, Delete, Add) */}
+                {/* TODO: Add other links for axios (Add) */}
                   <Link to={"/cart"} state={{open: open}}>
                     <li className="cursor-pointer">Cart</li>
                   </Link>
                   <Link to={"/delete"} state={{open: open}}>
-                    <li className="cursor-pointer">DeleteProduct</li>
+                    <li className="cursor-pointer">Delete Product</li>
+                  </Link>
+                  <Link to={"/Add"} state={{open: open}}>
+                    <li className="cursor-pointer">Add Product</li>
                   </Link>
                   <span onClick={handleLogout}>Log Out</span>
                 </> : 

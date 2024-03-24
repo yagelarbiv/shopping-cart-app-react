@@ -39,11 +39,11 @@ export default function UpdateProduct() {
       </div>
       <div>
         <label htmlFor="category">item category: </label>
-        <select name="category" onChange={(e) => setImage(e.target.value)}>
+        <select name="category" onChange={(e) => setItem({ ...item, category: e.target.value })}>
           <option>pick an Category</option>
           {
-            Categories.map((category, index) => {
-              return <option key={index} value={category.name}>{category.name}</option>;
+            Categories.map((category) => {
+              return <option key={category.id} value={category.name}>{category.name}</option>;
             })
           }
         </select>

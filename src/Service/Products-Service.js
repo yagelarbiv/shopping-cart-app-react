@@ -17,8 +17,7 @@ export default class ProductsService {
   }
 
   async createProduct(product) {
-    const response = await this.axios.post(`${this.ProductsURL}/products`, product);
-    return response.data;
+    return await axios.post(this.ProductsURL, product);
   }
 
   updateProduct(product){
@@ -29,3 +28,7 @@ export default class ProductsService {
     return axios.delete(`${this.ProductsURL}/${id}`);
   }
 }
+/* 
+const response = await this.axios.post(`${this.ProductsURL}/products`, product);
+    return response.data;
+*/
