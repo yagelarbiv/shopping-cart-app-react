@@ -7,7 +7,7 @@ import {
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 
-export default function Product({ Item, open }) {
+export default function Product({ Item, open, Categories }) {
   const Dispatch = useDispatch();
   const Cart = useSelector((state) => state.Cart);
   const [images, setImages] = useState(Item?.images[0]);
@@ -24,7 +24,7 @@ export default function Product({ Item, open }) {
 
   return (
     <div>
-      <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 h-[390px] mt-10 ml-5 rounded-xl">
+      <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 h-[500px] mt-10 ml-5 rounded-xl">
         <div className="h-[180px]">
           <img
             src={images}
@@ -47,6 +47,8 @@ export default function Product({ Item, open }) {
         <div className="max-w-none w-40 truncate mt-8 text-gray-700 font-bold text-lg">
           <h1>{Item?.title}</h1>
           <p>id:{Item?.id}</p>
+          <p>Category: {Item?.category}</p>
+          <p>price: {Item?.price}$</p>
         </div>
         <div className="flex items-center justify-center w-full mt-2">
           <button
@@ -66,6 +68,15 @@ export default function Product({ Item, open }) {
               Details
             </button>
           </Link>
+          {
+            open ? (
+              <Link to={"/update"}  state={{Item: Item, Categories: Categories}}>
+                <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
+                  update
+                </button>
+              </Link>
+            ) : null
+          }
         </div>
       </div>
     </div>

@@ -22,8 +22,7 @@ export default class ProductsService {
   }
 
   updateProduct(product){
-    const { id, ...productData } = product;
-    return this.axios.patch(`${this.ProductsURL}/${id}`, productData);
+    return axios.patch(`${this.ProductsURL}/${product.id}`, product);
   }
 
   async deleteProduct(id) {

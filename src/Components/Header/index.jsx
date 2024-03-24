@@ -12,7 +12,8 @@ export default function Header() {
       setlogedin(true);
       setOpen(uid === "OZ0hciFMZ2QroxRB986f5uc0Lf92");
     } else {
-      setlogedin(false);
+      setlogedin(false); 
+      setOpen(false);
       console.log("user is logged out");
     }
   });
