@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartTile from "../Components/Cart-Tile";
+import { addDiscount } from "../utils/moneyUtils";
 
 export default function Cart() {
   const [total, setTotal] = useState(0);
   let Cart = useSelector((state) => state.Cart);
 
   useEffect(() => {
-    setTotal(Cart.reduce((acc, curr) => acc + curr.price, 0));
+    setTotal(addDiscount(Cart));
   }, [Cart]);
-
   return (
     <div className="flex justify-center">
       {Cart?.length ? (

@@ -38,6 +38,9 @@ export default function CartTile({ cartItem }) {
           <div className="ml-10 self-start space-y-5">
             <h1 className="text-xl text-white font-bold">{cartItem?.tile}</h1>
             <p className="text-white font-extrabold">{cartItem?.price}$</p>
+            <p className="text-white font-extrabold">
+              {cartItem?.discountPercentage}%
+            </p>
           </div>
         </div>
         <div>
