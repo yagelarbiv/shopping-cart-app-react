@@ -12,7 +12,7 @@ export default function Header() {
       setlogedin(true);
       setOpen(uid === "OZ0hciFMZ2QroxRB986f5uc0Lf92");
     } else {
-      setlogedin(false); 
+      setlogedin(false);
       setOpen(false);
       console.log("user is logged out");
     }
@@ -22,7 +22,7 @@ export default function Header() {
       .then(() => {
         Navigate("/");
       })
-      .catch((error) => {});
+      .catch((error) => { });
   };
 
   return (
@@ -31,17 +31,17 @@ export default function Header() {
         <Link to={"/"} state={{ open }}>
           <div className="ml-5">
             <h1 className="text-red-900 font-bold text-xl sm:text-2xl md:text-3xl cursor-pointer tracking-wide">
-              REACT REDUX SHOPPING CART
+              SHOPPING CART
             </h1>
           </div>
         </Link>
         <ul className="flex list-none items-center space-x-6 text-gray-800 font-semibold">
-          <Link to={"/"}  state={{ open }}>
+          <Link to={"/"} state={{ open }}>
             <li className="cursor-pointer list-none">Home</li>
           </Link>
           {logedin ? (
             <>
-              { open ?
+              {open ?
                 <>
                   <Link to={"/cart"}>
                     <li className="cursor-pointer">Cart</li>
@@ -53,7 +53,7 @@ export default function Header() {
                     <li className="cursor-pointer">Add Product</li>
                   </Link>
                   <span onClick={handleLogout}>Log Out</span>
-                </> : 
+                </> :
                 <>
                   <span onClick={handleLogout}>Log Out</span>
                   <Link to={"/cart"}>

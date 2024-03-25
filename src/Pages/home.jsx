@@ -9,7 +9,6 @@ export default function Home() {
   const [Categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const { state } = useLocation();
-  console.log(state);
 
   async function fetchListOfProducts() {
     let Service = new ProductsService();
@@ -78,7 +77,7 @@ export default function Home() {
           <div className="min-h-[80vh] grid sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 max-w-6xl mx-auto p-3">
             {products?.length
               ? products.map((productItem) => (
-                  <Product key={productItem.id} Item={productItem} Categories={Categories} />
+                  <Product key={productItem.id} Item={productItem} state={state} Categories={Categories} />
                 ))
               : null}
           </div>
