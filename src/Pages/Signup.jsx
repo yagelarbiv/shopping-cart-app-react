@@ -18,7 +18,6 @@ export default function SignUp() {
       setErrorPassword("");
         await createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
           console.log(user);
           navigate("/login");

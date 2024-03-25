@@ -23,8 +23,8 @@ export default function Product({ Item, state, Categories }) {
   }
 
   return (
-    <div>
-      <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 h-[500px] mt-10 ml-5 rounded-xl">
+    <div className="flex flex-col items-center">
+      <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 mt-10 ml-5 rounded-xl">
         <div className="h-[180px]">
           <img
             src={images}
@@ -44,7 +44,7 @@ export default function Product({ Item, state, Categories }) {
             })}
           </select>
         </div>
-        <div className="max-w-none w-40 truncate mt-8 text-gray-700 font-bold text-lg">
+        <div className="max-w-none w-40 mt-8 text-gray-700 font-bold text-lg">
           <h1>{Item?.title}</h1>
           <p>id:{Item?.id}</p>
           <p>Category: {Item?.category}</p>
