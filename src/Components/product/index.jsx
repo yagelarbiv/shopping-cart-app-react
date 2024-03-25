@@ -7,7 +7,7 @@ import {
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 
-export default function Product({ Item, open, Categories }) {
+export default function Product({ Item, state, Categories }) {
   const Dispatch = useDispatch();
   const Cart = useSelector((state) => state.Cart);
   const [images, setImages] = useState(Item?.images[0]);
@@ -50,7 +50,7 @@ export default function Product({ Item, open, Categories }) {
           <p>Category: {Item?.category}</p>
           <p>price: {Item?.price}$</p>
         </div>
-        <div className="flex items-center justify-center w-full mt-2">
+        <div className="flex flex-row items-center justify-center w-full mt-0.5">
           <button
             onClick={
               Cart.some((Product) => Product.id === Item.id)
@@ -63,20 +63,22 @@ export default function Product({ Item, open, Categories }) {
               ? "Remove from Cart"
               : "Add to Cart"}
           </button>
-          <Link to={"/details"}  state={{Item: Item}}>
-            <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
-              Details
-            </button>
-          </Link>
-          {
-            open ? (
-              <Link to={"/update"}  state={{Item: Item, Categories: Categories}}>
-                <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
-                  update
-                </button>
-              </Link>
-            ) : null
-          }
+          <div className="flex flex-col">
+            <Link to={"/details"} state={{ Item: Item }}>
+              <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
+                Details
+              </button>
+            </Link>
+            {
+              !(state?.open) ? (
+                <Link to={"/update"} state={{ Item: Item, Categories: Categories }}>
+                  <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
+                    update
+                  </button>
+                </Link>
+              ) : null
+            }
+          </div>
         </div>
       </div>
     </div>

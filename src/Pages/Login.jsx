@@ -34,9 +34,9 @@ export default function Login() {
               </h1>
               <form>
                 <div className="mb-3">
-                  <label htmlFor="email-address">Email address</label>
+                  <label htmlFor="email-address">Email address: </label>
                   <input
-                    id="email-address"
+                    className="border-2 rounded-lg"
                     name="email"
                     type="email"
                     required
@@ -46,9 +46,9 @@ export default function Login() {
                 </div>
 
                 <div className="mb-3">
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Password: </label>
                   <input
-                    id="password"
+                    className="border-2 rounded-lg"
                     name="password"
                     type="password"
                     required

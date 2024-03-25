@@ -8,9 +8,8 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const [Categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(useLocation());
   const { state } = useLocation();
-  const { open } = state;
+  console.log(state);
 
   async function fetchListOfProducts() {
     let Service = new ProductsService();
@@ -79,7 +78,7 @@ export default function Home() {
           <div className="min-h-[80vh] grid sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 max-w-6xl mx-auto p-3">
             {products?.length
               ? products.map((productItem) => (
-                  <Product key={productItem.id} Item={productItem} open={open} Categories={Categories} />
+                  <Product key={productItem.id} Item={productItem} Categories={Categories} />
                 ))
               : null}
           </div>
