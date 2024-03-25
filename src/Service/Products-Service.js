@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default class ProductsService {
 
-    ProductsURL= "http://localhost:3000/products";
+    ProductsURL= "http://localhost:3001/products";
     CategoriesURL = "http://localhost:3002/Categories";
 
   getProducts(){

@@ -8,9 +8,9 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const [Categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
+  console.log(useLocation());
   const { state } = useLocation();
   const { open } = state;
-  console.log(open);
 
   async function fetchListOfProducts() {
     let Service = new ProductsService();

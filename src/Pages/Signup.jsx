@@ -8,24 +8,28 @@ export default function SignUp() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [ValidatePassword, setValidatePassword] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        navigate("/login");
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ..
-      });
+    if(password === ValidatePassword) {
+      setErrorPassword("");
+        await createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/login");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+      else {
+        setErrorPassword("Passwords do not match");
+      }
   };
 
   return (
@@ -34,15 +38,15 @@ export default function SignUp() {
         <div className="flex justify-center">
           <div className="w-25 h-35 shadow-2xl p-10 rounded-xl">
             <h1 className="text-red-900 font-bold text-xl sm:text-2xl mb-2 md:text-3xl cursor-pointer tracking-wide">
-              {" "}
-              SignUp{" "}
+              SignUp
             </h1>
             <form>
               <div className="mb-3">
-                <label htmlFor="email-address">Email address</label>
+                <label htmlFor="email-address">Email address: </label>
                 <input
                   type="email"
                   label="Email address"
+                  className="p-1 border-2 rounded-lg"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -51,14 +55,28 @@ export default function SignUp() {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Password: </label>
                 <input
                   type="password"
                   label="Create password"
+                  className="p-1 border-2 rounded-lg"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="Password"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="password">Validate Password: </label>
+                <input
+                  type="password"
+                  label="Create password"
+                  className="p-1 border-2 rounded-lg"
+                  value={ValidatePassword}
+                  onChange={(e) => setValidatePassword(e.target.value)}
+                  required
+                  placeholder="Validate Password"
                 />
               </div>
 
@@ -69,9 +87,10 @@ export default function SignUp() {
               >
                 Sign up
               </button>
+              <p>{errorPassword}</p>
             </form>
             <p>
-              Already have an account?{" "}
+              Already have an account?
               <NavLink className={"text-red-900 text-lg"} to="/login">
                 Sign in
               </NavLink>
