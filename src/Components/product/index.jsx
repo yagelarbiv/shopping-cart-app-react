@@ -21,7 +21,7 @@ export default function Product({ Item, state, Categories }) {
     Dispatch(removeFromCart(Item.id));
     Dispatch(setLocalStorage(Item));
   }
-
+  console.log(state);
   return (
     <div className="flex flex-col items-center">
       <div className="group flex flex-col items-center border-2 border-red-900 gap-3 p-4 mt-10 ml-5 rounded-xl">
@@ -70,7 +70,7 @@ export default function Product({ Item, state, Categories }) {
               </button>
             </Link>
             {
-              !(state?.open) ? (
+              state?.open ? (
                 <Link to={"/update"} state={{ Item: Item, Categories: Categories }}>
                   <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
                     update

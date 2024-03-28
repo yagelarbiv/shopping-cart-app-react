@@ -1,9 +1,9 @@
-# generate a file for this project
-# docker run -p 3000:3000 <image id>
+# add a file to dockerfile
 FROM node:alpine
 WORKDIR /app
 COPY package.json ./
 RUN npm install
+COPY . ./
 EXPOSE 3000
-COPY . .
+COPY DataBase /app/DataBase
 CMD ["npm", "start"]
