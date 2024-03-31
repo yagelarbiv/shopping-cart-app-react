@@ -49,8 +49,8 @@ export default function Home() {
   useEffect(() => {
     fetchListOfProducts();
     fetchListOfCategories();
-  }, []);
-
+  }, [state]);
+  
   return (
     <div>
       {loading ? (

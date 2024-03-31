@@ -8,21 +8,26 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
 
   const onLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        navigate("/");
-        console.log(user);
+        const uid = user.uid;
+        setOpen(uid === "OZ0hciFMZ2QroxRB986f5uc0Lf92");
+        navigate("/", {
+          state: {
+            open: open,
+          }
+        });
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  
+
   return (
     <>
       <main>
