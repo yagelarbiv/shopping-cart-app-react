@@ -10,14 +10,17 @@ const cartSlice = createSlice({
     removeFromCart(state, action) {
       return state.filter((item) => item.id !== action.payload);
     },
-    getFromLocalStorage(state, action) {
+    getFromLocalStorage(state) {
       return localStorage.getItem("cart", JSON.stringify(state))
     },
-    setLocalStorage(state, action) {
+    setLocalStorage(state) {
       localStorage.setItem("cart", JSON.stringify(state))
+    },
+    clearLocalStorage() {
+      localStorage.clear();
     }
   },
 });
 
-export const { addToCart, removeFromCart,setLocalStorage } = cartSlice.actions;
+export const { addToCart, removeFromCart, setLocalStorage, clearLocalStorage } = cartSlice.actions;
 export default cartSlice.reducer;

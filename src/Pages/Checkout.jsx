@@ -1,16 +1,24 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { addDiscount } from "../utils/moneyUtils";
+import { useNavigate } from "react-router-dom";
+import { clearLocalStorage } from "../Store/Slices/cart-Slice";
 
 export default function Checkout() {
+  const Navigate = useNavigate();
   const [total, setTotal] = useState(0);
   const [Length, setLength] = useState(0);
   let Cart = useSelector((state) => state.Cart);
   
   function checkOut() {
-    localStorage.clear();
+    clearLocalStorage([]);
     setLength(0);
     setTotal(0);
+    Navigate("/cart",{
+      state:{
+        cart:[1]
+      }
+    });
     alert("Thank you for shopping with us");
   }
   useEffect(() => {

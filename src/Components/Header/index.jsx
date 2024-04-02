@@ -1,13 +1,21 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { Link } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../FireBase.js";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [login, setLogin] = useState(false);
+  const [User, setUser] = useState({});
+  
   onAuthStateChanged(auth, (user) => {
     if (user) {
+      setUser({
+        email: user.email, 
+        Id:user.uid, Name:user.displayName,
+        creationTime:user.metadata.creationTime,
+        LasTLogIn:user.metadata.lastSignInTime,
+      });
       const uid = user.uid;
       setLogin(true);
       setOpen(uid === "OZ0hciFMZ2QroxRB986f5uc0Lf92");
@@ -17,17 +25,6 @@ export default function Header() {
       console.log("user is logged out");
     }
   });
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        Navigate("/", {
-          state: {
-            open: false,
-          }
-        });
-      })
-      .catch((error) => { console.log(error) });
-  };
 
   function NotLoggedIn() {
     return <>
@@ -42,7 +39,9 @@ export default function Header() {
 
   function LoggedInWithRegularUser() {
     return <>
-      <span onClick={handleLogout}>Log Out</span>
+      <Link to={"/profile"} state={{ User: User }}>
+        <li className="cursor-pointer">Log Out</li>
+      </Link>
       <Link to={"/cart"}>
         <li className="cursor-pointer">Cart</li>
       </Link>
@@ -60,7 +59,9 @@ export default function Header() {
       <Link to={"/Add"}>
         <li className="cursor-pointer">Add Product</li>
       </Link>
-      <span onClick={handleLogout}>Log Out</span>
+      <Link to={"/profile"} state={{ User: User }}>
+        <li className="cursor-pointer">Log Out</li>
+      </Link>
     </>;
   }
 

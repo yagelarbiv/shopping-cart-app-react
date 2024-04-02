@@ -6,7 +6,7 @@ export default function Pagination({ totalAmount, currentPage, setCurrentPage, A
   for (let i = 0; i < totalPages; i++) {
     Array.push(i);
   }
-console.log(totalAmount, currentPage, AmountPerPage );
+
   return (
     <>
       <div className="pagination">

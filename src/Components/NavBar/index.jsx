@@ -8,6 +8,7 @@ import Checkout from '../../Pages/Checkout';
 import DeleteProduct from "../../Pages/DeleteProduct";
 import UpdateProduct from "../../Pages/UpdateProduct";
 import AddProduct from "../../Pages/AddProduct";
+import Profile from "../../Pages/Profile";
 
 export default function NavBar() {
   return (
@@ -21,6 +22,7 @@ export default function NavBar() {
         <Route path="/delete" element={<DeleteProduct />} />
         <Route path="/update" element={<UpdateProduct />} />
         <Route path="/Add" element={<AddProduct />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
   )
 }
