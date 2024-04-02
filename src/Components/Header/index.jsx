@@ -5,14 +5,14 @@ import { auth } from "../../FireBase.js";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [logedin, setlogedin] = useState(false);
+  const [login, setLogin] = useState(false);
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
-      setlogedin(true);
+      setLogin(true);
       setOpen(uid === "OZ0hciFMZ2QroxRB986f5uc0Lf92");
     } else {
-      setlogedin(false);
+      setLogin(false);
       setOpen(false);
       console.log("user is logged out");
     }
@@ -22,9 +22,9 @@ export default function Header() {
       .then(() => {
         Navigate("/");
       })
-      .catch((error) => { });
+      .catch((error) => { console.log(error) });
   };
-
+  
   return (
     <div>
       <nav className="flex items-center justify-between h-20 max-w-6xl mx-auto">
@@ -39,7 +39,7 @@ export default function Header() {
           <Link to={"/"} state={{ open }}>
             <li className="cursor-pointer list-none">Home</li>
           </Link>
-          {logedin ? (
+          {login ? (
             <>
               {open ?
                 <>
@@ -64,7 +64,7 @@ export default function Header() {
             </>
           ) : (
             <>
-              <Link to={"/signup"}>
+              <Link to={"/sighup"}>
                 <li className="cursor-pointer">SignUp</li>
               </Link>
               <Link to={"/login"}>

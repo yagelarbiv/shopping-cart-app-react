@@ -12,8 +12,8 @@ import AddProduct from "./Pages/AddProduct";
 
 function App() {
   return (
-    <div >
-      <Header />
+    <>
+        <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/Cart" element={<Cart />} />
@@ -25,8 +25,8 @@ function App() {
         <Route path="/update" element={<UpdateProduct />} />
         <Route path="/Add" element={<AddProduct />} />
       </Routes>
-    </div>
-  );
+    </>
+  )
 }
 
-export default App;
+export default App

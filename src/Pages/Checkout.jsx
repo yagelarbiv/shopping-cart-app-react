@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { addDiscount } from "../utils/moneyUtils";
 
 export default function Checkout() {
   const [total, setTotal] = useState(0);
@@ -13,7 +14,7 @@ export default function Checkout() {
     alert("Thank you for shopping with us");
   }
   useEffect(() => {
-    setTotal(Cart.reduce((acc, curr) => acc + curr.price, 0));
+    setTotal(addDiscount(Cart));
     setLength(Cart.length);
   }, [Cart]);
 

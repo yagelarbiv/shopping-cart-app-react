@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../FireBase.js";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -17,11 +17,20 @@ export default function Login() {
         const user = userCredential.user;
         const uid = user.uid;
         setOpen(uid === "OZ0hciFMZ2QroxRB986f5uc0Lf92");
-        navigate("/", {
-          state: {
-            open: open,
-          }
-        });
+        if(uid === "OZ0hciFMZ2QroxRB986f5uc0Lf92"){
+          navigate("/", {
+            state: {
+              open: true,
+            }
+          });
+        }
+        else{
+          navigate("/", {
+            state: {
+              open: open,
+            }
+          });
+        }
       })
       .catch((error) => {
         console.log(error);

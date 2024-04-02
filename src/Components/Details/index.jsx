@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import {
@@ -7,7 +8,7 @@ import {
   setLocalStorage,
 } from "../../Store/Slices/cart-Slice";
 
-export default function Details() {
+export default function Details({ State }) {
   const Cart = useSelector((state) => state.Cart);
   const { state } = useLocation();
   const { Item } = state;
@@ -100,18 +101,21 @@ export default function Details() {
           </p>
         </div>
         <div className="flex items-center justify-center w-full mt-2">
-        <button
-            onClick={
-              Cart.some((Product) => Product.id === Item.id)
-                ? handleRemoveFromCart
-                : handleAddToCart
-            }
-            className="bg-red-950 text-white border-2 rounded-lg font-bold p-4"
-          >
-            {Cart.some((Product) => Product.id === Item.id)
-              ? "Remove from Cart"
-              : "Add to Cart"}
-          </button>
+          {
+            State?.open ?
+            <button
+              onClick={
+                Cart.some((Product) => Product.id === Item.id)
+                  ? handleRemoveFromCart
+                  : handleAddToCart
+              }
+              className="bg-red-950 text-white border-2 rounded-lg font-bold p-4"
+            >
+              {Cart.some((Product) => Product.id === Item.id)
+                ? "Remove from Cart"
+                : "Add to Cart"}
+            </button> : null
+          }
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ProductsService from '../Service/Products-Service';
 import { Navigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ export default function DeleteProduct() {
   }
   return (
     <div>
-      <label for="id">Product ID: </label>
+      <label htmlFor="id">Product ID: </label>
       <input type="text" className='border-2' id="id" onChange={(e)=>SetId(e.target.value)} />
       <button onClick={deletePro}>Delete</button>
     </div>

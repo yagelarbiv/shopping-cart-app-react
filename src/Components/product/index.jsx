@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -51,18 +52,22 @@ export default function Product({ Item, state, Categories }) {
           <p>price: {Item?.price}$</p>
         </div>
         <div className="flex flex-row items-center justify-center w-full mt-0.5">
-          <button
-            onClick={
-              Cart.some((Product) => Product.id === Item.id)
-                ? handleRemoveFromCart
-                : handleAddToCart
-            }
-            className="bg-red-950 text-white border-2 rounded-lg font-bold p-4"
-          >
-            {Cart.some((Product) => Product.id === Item.id)
-              ? "Remove from Cart"
-              : "Add to Cart"}
-          </button>
+          {
+            state?.open ? (
+              <button
+                onClick={
+                  Cart.some((Product) => Product.id === Item.id)
+                    ? handleRemoveFromCart
+                    : handleAddToCart
+                }
+                className="bg-red-950 text-white border-2 rounded-lg font-bold p-4"
+              >
+                {Cart.some((Product) => Product.id === Item.id)
+                  ? "Remove from Cart"
+                  : "Add to Cart"}
+              </button>
+            ) : null
+          }
           <div className="flex flex-col">
             <Link to={"/details"} state={{ Item: Item }}>
               <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
@@ -84,3 +89,5 @@ export default function Product({ Item, state, Categories }) {
     </div>
   );
 }
+
+

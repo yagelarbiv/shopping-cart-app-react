@@ -5,12 +5,23 @@ import CartTile from "../Components/Cart-Tile";
 import { addDiscount } from "../utils/moneyUtils";
 
 export default function Cart() {
+  const [Length, setLength] = useState(0);
   const [total, setTotal] = useState(0);
   let Cart = useSelector((state) => state.Cart);
 
   useEffect(() => {
     setTotal(addDiscount(Cart));
+    setLength(Cart.length);
   }, [Cart]);
+
+  function checkOut() {
+    localStorage.clear();
+    setLength(0);
+    setTotal(0);
+    Cart = [];
+    alert("Thank you for shopping with us");
+  }
+
   return (
     <div className="flex justify-center">
       {Cart?.length ? (
@@ -28,18 +39,18 @@ export default function Cart() {
                 Your Cart Summary
               </h1>
               <p>
-                <span className="text-gray-800 font-bold">Total Item</span>
-                <span>: {Cart.length}</span>
+                <span className="text-gray-800 font-bold">Total Items</span>
+                <span>: {Length}</span>
               </p>
               <p>
-                <span className="text-gray-800 font-bold">Total Amount</span>
+                <span className="text-gray-800 font-bold">Total Price</span>
                 <span>: {total}$</span>
               </p>
-              <Link to={"/Checkout"} state={{ cart: Cart }}>
-                <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
-                  CHECKOUT
-                </button>
-              </Link>
+              {/* <Link to={"/Checkout"} state={{ cart: Cart }}> */}
+              <button onClick={checkOut} className="bg-red-950 text-white border-2 rounded-lg font-bold p-4">
+                CHECKOUT
+              </button>
+              {/*</Link>*/}
             </div>
           </div>
         </>
