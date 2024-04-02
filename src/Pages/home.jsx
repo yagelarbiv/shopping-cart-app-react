@@ -3,18 +3,26 @@ import { Circles } from "react-loader-spinner";
 import Product from "../Components/product";
 import ProductsService from "../Service/Products-Service";
 import { useLocation } from "react-router-dom";
+import Pagination from "../Components/Pagination";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [TotalLength, setTotalLength] = useState(0);
   const [Categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(5);
   const { state } = useLocation();
 
   async function fetchListOfProducts() {
     let Service = new ProductsService();
     setLoading(true);
     try {
-      const response = await Service.getProducts();
+      setProductsPerPage(5);
+      const length = await Service.getProducts();
+      const lengthData = await length.data.length;
+      setTotalLength(lengthData);
+      const response = await Service.getProductsByPagination(currentPage, productsPerPage);
       const data = await response.data;
       if (data) {
         setProducts(data);
@@ -49,7 +57,7 @@ export default function Home() {
   useEffect(() => {
     fetchListOfProducts();
     fetchListOfCategories();
-  }, [state]);
+  }, [state, currentPage]);
   
   return (
     <div>
@@ -74,6 +82,9 @@ export default function Home() {
               ))}
             </select>
           </div>
+          <div className="h-10 flex col justify-center">
+              <Pagination totalAmount={TotalLength} currentPage={currentPage} setCurrentPage={setCurrentPage} AmountPerPage={productsPerPage} />
+            </div>
           <div className="min-h-[80vh] grid sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 max-w-6xl mx-auto p-3">
             {products?.length
               ? products.map((productItem) => (

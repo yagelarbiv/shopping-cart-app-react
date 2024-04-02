@@ -3,8 +3,13 @@ import axios from "axios";
 export default class ProductsService {
 
     ProductsURL= "http://localhost:3001/products";
+    SkipUrl = "http://localhost:3001/Skip";
     CategoriesURL = "http://localhost:3002/Categories";
 
+  getProductsByPagination(currentPage, productsPerPage){
+    let skipItems = (currentPage - 1) * productsPerPage
+    return axios.get(`${this.ProductsURL}?_page=${currentPage}&_limit=${100}&_start=${skipItems}`)
+  }
   getProducts(){
     return axios.get(this.ProductsURL)
   }

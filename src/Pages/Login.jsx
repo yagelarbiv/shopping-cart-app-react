@@ -79,7 +79,7 @@ export default function Login() {
                 </div>
               </form>
               <p className="text-sm text-black text-center">
-                No account yet? <NavLink className={"text-red-900 text-lg"} to="/signup">Sign up</NavLink>
+                No account yet? <NavLink className={"text-red-900 text-lg"} to="/signUp">Sign up</NavLink>
               </p>
             </div>
           </div>

@@ -15,7 +15,7 @@ export default function NavBar() {
         <Route exact path="/" element={<Home />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/login" element={<Login />}/>
-        <Route path="/signup" element={<SignUp />}/>
+        <Route path="/signUp" element={<SignUp />}/>
         <Route path="/details" element={<Details />} />
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/delete" element={<DeleteProduct />} />
