@@ -63,7 +63,8 @@ export default function Profile() {
       </p>
       <button className="bg-red-950 text-white border-2 rounded-lg font-bold p-4"
         onClick={handleLogOut}>
-        Logout</button>
+        Logout
+      </button>
     </div>
   )
 }
