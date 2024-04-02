@@ -28,7 +28,42 @@ export default function Header() {
       })
       .catch((error) => { console.log(error) });
   };
-  
+
+  function NotLoggedIn() {
+    return <>
+      <Link to={"/sighup"}>
+        <li className="cursor-pointer">SignUp</li>
+      </Link>
+      <Link to={"/login"}>
+        <li className="cursor-pointer">Login</li>
+      </Link>
+    </>;
+  }
+
+  function LoggedInWithRegularUser() {
+    return <>
+      <span onClick={handleLogout}>Log Out</span>
+      <Link to={"/cart"}>
+        <li className="cursor-pointer">Cart</li>
+      </Link>
+    </>;
+  }
+
+  function LoggedInWithAdminUser() {
+    return <>
+      <Link to={"/cart"}>
+        <li className="cursor-pointer">Cart</li>
+      </Link>
+      <Link to={"/delete"}>
+        <li className="cursor-pointer">Delete Product</li>
+      </Link>
+      <Link to={"/Add"}>
+        <li className="cursor-pointer">Add Product</li>
+      </Link>
+      <span onClick={handleLogout}>Log Out</span>
+    </>;
+  }
+
   return (
     <div>
       <nav className="flex items-center justify-between h-20 max-w-6xl mx-auto">
@@ -45,36 +80,12 @@ export default function Header() {
           </Link>
           {login ? (
             <>
-              {open ?
-                <>
-                  <Link to={"/cart"}>
-                    <li className="cursor-pointer">Cart</li>
-                  </Link>
-                  <Link to={"/delete"}>
-                    <li className="cursor-pointer">Delete Product</li>
-                  </Link>
-                  <Link to={"/Add"}>
-                    <li className="cursor-pointer">Add Product</li>
-                  </Link>
-                  <span onClick={handleLogout}>Log Out</span>
-                </> :
-                <>
-                  <span onClick={handleLogout}>Log Out</span>
-                  <Link to={"/cart"}>
-                    <li className="cursor-pointer">Cart</li>
-                  </Link>
-                </>
+              { 
+                open ? LoggedInWithAdminUser() : LoggedInWithRegularUser() 
               }
             </>
           ) : (
-            <>
-              <Link to={"/sighup"}>
-                <li className="cursor-pointer">SignUp</li>
-              </Link>
-              <Link to={"/login"}>
-                <li className="cursor-pointer">Login</li>
-              </Link>
-            </>
+            NotLoggedIn()
           )}
         </ul>
       </nav>
