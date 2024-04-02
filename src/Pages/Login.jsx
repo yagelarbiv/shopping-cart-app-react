@@ -8,7 +8,6 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [open, setOpen] = useState(false);
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -16,7 +15,6 @@ export default function Login() {
       .then((userCredential) => {
         const user = userCredential.user;
         const uid = user.uid;
-        setOpen(uid === "OZ0hciFMZ2QroxRB986f5uc0Lf92");
         if(uid === "OZ0hciFMZ2QroxRB986f5uc0Lf92"){
           navigate("/", {
             state: {
@@ -27,7 +25,7 @@ export default function Login() {
         else{
           navigate("/", {
             state: {
-              open: open,
+              open: false,
             }
           });
         }

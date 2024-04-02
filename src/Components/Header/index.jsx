@@ -20,7 +20,11 @@ export default function Header() {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        Navigate("/");
+        Navigate("/", {
+          state: {
+            open: false,
+          }
+        });
       })
       .catch((error) => { console.log(error) });
   };
